@@ -10,4 +10,38 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap.min
  */
+
+/* universal */
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 40px;
+    background-image: url(http://youthvoices.net/sites/default/files/image/4433/may/type.jpg);
+}
+
+section {
+    overflow: auto;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.center {
+    text-align: center;
+}
+
+.center h1 {
+    margin-bottom: 10px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: lightgrey;
+    opacity: 0.92;
+}

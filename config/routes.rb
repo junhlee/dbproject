@@ -1,4 +1,7 @@
 Dbproject::Application.routes.draw do
+  get "static_pages/home"
+  get "static_pages/help"
+
   resources :vendors
 
   resources :carts
@@ -15,7 +18,10 @@ Dbproject::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'products#index'
+  root 'static_pages#home'
+
+  match '/customer_signup', to: 'customers#new', via: 'get'
+  match '/vendor_signup', to: 'vendors#new',  via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

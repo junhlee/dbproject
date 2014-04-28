@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand" href="">Thrift</a>
+      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
+  </div><!-- /.container-fluid -->
+</nav>
+    <body>
+      <div class="jumbotron">
+        <h1>Welcome to the Thrift Shop!</h1>
+        <h2>
+          Buy stuff. Sell stuff. You can do it all
+          <%= link_to "here", 'products' %>.
+        </h2>
+
+        <%= link_to "Customer Signup", 'customer_signup', class: "btn btn-large btn-default" %>
+        <%= link_to "Vendor Signup", 'vendor_signup', class: "btn btn-large btn-default" %>
+      </div>
+    </body>
+</html>

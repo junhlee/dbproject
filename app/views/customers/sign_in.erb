@@ -1,18 +1,28 @@
-<div class="jumbotron">
-    <form class="form-inline" role="form">
-      <div class="form-group">
-        <label class="sr-only" for="exampleInputEmail2">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="exampleInputPassword2">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
-      </div>
-      <button type="submit" class="btn btn-default">Sign in</button>
-    </form>
+<div class="container center">
+    <div class="jumbotron">
+        <%= form_for(@customer) do |f| %>
+            <% if @customer.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+                  <ul>
+                    <% @customer.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+            <form role="form">
+              <div class="form-group">
+                <%= f.label :username %>
+                <%= f.text_field :username, class:'form-control', placeholder:'Enter username' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, class:'form-control', placeholder:'Enter password'%>
+              </div>
+              <button type="submit" class="btn btn-primary actions">Sign In</button>
+            </form>
+        <% end %>
+    </div>
 </div>

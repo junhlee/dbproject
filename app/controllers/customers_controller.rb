@@ -29,13 +29,13 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
     respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @customer }
+      if !Customer.find_by(username: @customer.username)
+        @customer.save
+        format.html { redirect_to :back, notice: 'Account Successfully Created!' }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to :back, notice: 'User already exists'}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end

@@ -2,6 +2,8 @@ Dbproject::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/help"
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   resources :vendors
 
   resources :carts
@@ -22,8 +24,8 @@ Dbproject::Application.routes.draw do
 
   match '/customer_signup', to: 'customers#new', via: 'get'
   match '/vendor_signup', to: 'vendors#new',  via: 'get'
-  match '/customer_signin', to: 'customers#sign_in', via: 'get'
-  match '/vendor_signin', to: 'vendors#sign_in', via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

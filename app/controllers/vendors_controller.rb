@@ -1,6 +1,10 @@
 class VendorsController < ApplicationController
   before_action :set_vendor, only: [:show, :edit, :update, :destroy]
 
+  def sign_in
+    @vendors = Vendor.all
+  end
+
   # GET /vendors
   # GET /vendors.json
   def index

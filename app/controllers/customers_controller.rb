@@ -1,6 +1,10 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  def sign_in
+    @customer = Customer.new
+  end
+
   # GET /customers
   # GET /customers.json
   def index

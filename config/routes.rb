@@ -22,6 +22,8 @@ Dbproject::Application.routes.draw do
 
   match '/customer_signup', to: 'customers#new', via: 'get'
   match '/vendor_signup', to: 'vendors#new',  via: 'get'
+  match '/customer_signin', to: 'customers#sign_in', via: 'get'
+  match '/vendor_signin', to: 'vendors#sign_in', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,28 +1,30 @@
-<div class="jumbotron">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
+<div class="container center">
+    <div class="jumbotron">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-      <tbody>
-        <% @products.each do |product| %>
-          <tr>
-            <td><%= link_to product.name, product %></td>
-            <td><%= "$%.2f" % product.price %></td>
-            <td><%= product.stock %></td>
-            <td><%= link_to 'Add To Cart', product %></td>
-            <td><%= link_to 'Add To Wishlist', edit_product_path(product) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= link_to product.name, product %></td>
+                <td><%= "$%.2f" % product.price %></td>
+                <td><%= product.stock %></td>
+                <td><%= link_to 'Add To Cart', product %></td>
+                <td><%= link_to 'Add To Wishlist', edit_product_path(product) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
 </div>
 <br>
 

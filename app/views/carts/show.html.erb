@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container center">
+    <div class="jumbotron">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @cart.customer_id %>
-</p>
+        <p>
+          <strong>Customer:</strong>
+          <%= Customer.find_by(id: @cart.customer_id).username %>
+        </p>
 
-<p>
-  <strong>Number of products:</strong>
-  <%= @cart.number_of_products %>
-</p>
+        <p>
+          <strong>Number of products:</strong>
+          <%= @cart.number_of_products %>
+        </p>
 
-<p>
-  <strong>Total price:</strong>
-  <%= @cart.total_price %>
-</p>
+        <p>
+          <strong>Total price:</strong>
+          <%= @cart.total_price %>
+        </p>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+        <%= link_to 'Shop', products_path(@cart), class:'btn btn-default btn-large' %> |
+        <%= link_to 'Back', carts_path %>
+    </div>
+</div>

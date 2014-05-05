@@ -26,6 +26,8 @@ Dbproject::Application.routes.draw do
   match '/vendor_signup', to: 'vendors#new',  via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/add_to_cart', to: 'carts#add_to_cart', via: 'get'
+  match '/remove_from_cart', to: 'carts#remove_from_cart', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @cart = params[:cart]
     @products = Product.all
   end
 

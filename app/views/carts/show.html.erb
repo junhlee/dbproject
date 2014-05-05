@@ -4,20 +4,40 @@
 
         <p>
           <strong>Customer:</strong>
-          <%= Customer.find_by(id: @cart.customer_id).username %>
+          <%= Customer.find_by(id: @cart.customer_id).name %>
         </p>
+      <table class="table">
+        <thead>
+        <tr>
+          <th><center>Name</center></th>
+          <th><center>Price</center></th>
+          <th>Quantity</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <% prod_list = @cart.products.all %>
+        <% prod_list.uniq.each do |product| %>
+            <tr>
+              <td><%= link_to product.name, product %></td>
+              <td><%= "$%.2f" %product.price %></td>
+              <td><%= prod_list.count(product) %></td>
+              <td><%= link_to 'Remove from cart', remove_from_cart_path(:cart_id => @cart,:product_id => product.id)%></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
         <p>
-          <strong>Number of products:</strong>
+          <strong>Items in cart:</strong>
           <%= @cart.number_of_products %>
         </p>
 
         <p>
-          <strong>Total price:</strong>
-          <%= @cart.total_price %>
+          <strong>Total:</strong>
+          <%= "$%.2f" %@cart.total_price %>
         </p>
-
-        <%= link_to 'Shop', products_path(@cart), class:'btn btn-default btn-large' %> |
-        <%= link_to 'Back', carts_path %>
+        <%= link_to 'Shop', products_path(:cart => @cart), class:'btn btn-default btn-large' %>
     </div>
 </div>

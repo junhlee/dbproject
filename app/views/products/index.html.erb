@@ -18,7 +18,7 @@
                 <td><%= link_to product.name, product %></td>
                 <td><%= "$%.2f" % product.price %></td>
                 <td><%= product.stock %></td>
-                <td><%= link_to 'Add To Cart', product %></td>
+                <td><%= link_to 'Add To Cart', add_to_cart_path(:cart_id => @cart,:product_id => product.id) %></td>
                 <td><%= link_to 'Add To Wishlist', edit_product_path(product) %></td>
               </tr>
             <% end %>

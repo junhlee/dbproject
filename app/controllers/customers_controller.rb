@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
     if !@customer.cart
-      @customer.cart = Cart.create(customer_id: params[:id])
+      @customer.cart = Cart.create(customer_id: params[:id], total_price: 0)
     end
   end
 

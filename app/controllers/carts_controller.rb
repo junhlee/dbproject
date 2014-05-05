@@ -1,6 +1,26 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+  def add_to_cart
+    @cart = Cart.find_by(id:params[:cart_id])
+    if params[:product_id]
+      @product = Product.find_by(id:params[:product_id])
+      @cart.products << @product
+    end
+    @cart.update_cart
+    render 'show', :cart_id => @cart.id
+  end
+
+  def remove_from_cart
+    @cart = Cart.find_by(id:params[:cart_id])
+    if params[:product_id]
+      @product = Product.find_by(id:params[:product_id])
+      @cart.products.delete(@product)
+    end
+    @cart.update_cart
+    render 'show', :cart_id => @cart.id
+  end
+
   # GET /carts
   # GET /carts.json
   def index
@@ -10,6 +30,8 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @cart = Cart.find_by(id:params[:id])
+    @cart.update_cart
   end
 
   # GET /carts/new
@@ -25,7 +47,6 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-
     respond_to do |format|
       if @cart.save
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }

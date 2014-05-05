@@ -11,27 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :stock %><br>
-    <%= f.number_field :stock %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br>
-    <%= f.datetime_select :created_at %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_at %><br>
-    <%= f.datetime_select :updated_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <form role="form">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class:'form-control', placeholder:'Enter product name' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :price %>
+        <%= f.text_field :price, class:'form-control', placeholder:'Enter price ($)' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :stock %>
+        <%= f.text_field :stock, class:'form-control', placeholder:'Enter quantity you want to sell' %>
+      </div>
+      <button type="submit" class="btn btn-default actions">Post Listing</button>
+    </form>
 <% end %>

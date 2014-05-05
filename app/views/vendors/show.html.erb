@@ -1,49 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="container center">
+  <div class="jumbotron">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @vendor.name %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @vendor.name %>
+    </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @vendor.username %>
-</p>
+    <p>
+      <strong>Username:</strong>
+      <%= @vendor.username %>
+    </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @vendor.password %>
-</p>
+    <p>
+      <strong>City:</strong>
+      <%= @vendor.city %>
+    </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @vendor.city %>
-</p>
+    <p>
+      <strong>Street:</strong>
+      <%= @vendor.street %>
+    </p>
 
-<p>
-  <strong>Street:</strong>
-  <%= @vendor.street %>
-</p>
+    <p>
+      <strong>Zip:</strong>
+      <%= "%05d" % @vendor.zip %>
+    </p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @vendor.zip %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @vendor.phone %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @vendor.created_at %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @vendor.updated_at %>
-</p>
-
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+    <p>
+      <strong>Phone:</strong>
+      <%= @vendor.phone %>
+    </p>
+    <%= link_to 'View Products', product_listing_path(:vendor_id => @vendor.id), class:'btn btn-default btn-large' %>
+  </div>
+</div>

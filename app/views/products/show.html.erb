@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container center">
+  <div class="jumbotron">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @product.name %>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      <%= "$%.2f" % @product.price %>
+    </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
+    <p>
+      <strong>Quantity:</strong>
+      <%= @product.stock %>
+    </p>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @product.created_at %>
-</p>
+    <p>
+      <strong>Sold By:</strong>
+      <%= link_to @vendor.username, @vendor %>
+    </p>
 
-<p>
-  <strong>Updated at:</strong>
-  <%= @product.updated_at %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    <%= link_to 'Back to Product Listing', Product, class:'btn btn-default btn-large' %>
+  </div>
+</div>

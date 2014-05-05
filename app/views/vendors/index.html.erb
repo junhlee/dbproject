@@ -1,43 +1,22 @@
-<h1>Listing vendors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>City</th>
-      <th>Street</th>
-      <th>Zip</th>
-      <th>Phone</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vendors.each do |vendor| %>
+<div class="container center">
+  <div class="jumbotron">
+    <table class="table">
+      <thead>
       <tr>
-        <td><%= vendor.name %></td>
-        <td><%= vendor.username %></td>
-        <td><%= vendor.password %></td>
-        <td><%= vendor.city %></td>
-        <td><%= vendor.street %></td>
-        <td><%= vendor.zip %></td>
-        <td><%= vendor.phone %></td>
-        <td><%= vendor.created_at %></td>
-        <td><%= vendor.updated_at %></td>
-        <td><%= link_to 'Show', vendor %></td>
-        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><center>Vendor</center></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
+      <tbody>
+      <% @vendors.each do |vendor| %>
+          <tr>
+            <td><%= link_to  vendor.username, vendor %></td>
+            <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+            <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 <br>
-
-<%= link_to 'New Vendor', new_vendor_path %>

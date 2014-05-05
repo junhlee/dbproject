@@ -5,6 +5,17 @@ class VendorsController < ApplicationController
     @vendors = Vendor.all
   end
 
+  def product_listing
+    @vendor = Vendor.find_by(params[:vendor_id])
+    @products = @vendor.products
+  end
+
+  def add_random_product
+    @vendor = Vendor.find_by(params[:vendor_id])
+    @vendor.add_random_product
+    redirect_to :back
+  end
+
   # GET /vendors
   # GET /vendors.json
   def index
@@ -14,6 +25,7 @@ class VendorsController < ApplicationController
   # GET /vendors/1
   # GET /vendors/1.json
   def show
+    @vendor
   end
 
   # GET /vendors/new
@@ -31,11 +43,12 @@ class VendorsController < ApplicationController
     @vendor = Vendor.new(vendor_params)
 
     respond_to do |format|
-      if @vendor.save
-        format.html { redirect_to @vendor, notice: 'Vendor was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vendor }
+      if !Vendor.find_by(username: @vendor.username)
+        @vendor.save
+        format.html { redirect_to :back, notice: 'Account Successfully Created!' }
+        format.json { render json: @vendor.errors, status: :unprocessable_entity }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to :back, notice: 'User already exists'}
         format.json { render json: @vendor.errors, status: :unprocessable_entity }
       end
     end
@@ -58,6 +71,7 @@ class VendorsController < ApplicationController
   # DELETE /vendors/1
   # DELETE /vendors/1.json
   def destroy
+    Product.delete(@vendor.products)
     @vendor.destroy
     respond_to do |format|
       format.html { redirect_to vendors_url }

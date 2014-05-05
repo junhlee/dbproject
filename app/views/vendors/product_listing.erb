@@ -1,0 +1,29 @@
+<div class="container center">
+  <div class="jumbotron">
+    <table class="table">
+      <thead>
+      <tr>
+        <th><center>Product Name</center></th>
+        <th><center>Price</center></th>
+        <th><center>Stock</center></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @products.each do |product| %>
+          <tr>
+            <td><%= link_to product.name, product %></td>
+            <td><%= "$%.2f" % product.price %></td>
+            <td><%= product.stock %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Add Product', new_product_path(:vendor_id => @vendor.id), class: 'btn btn-large btn-primary' %>
+    <%= link_to 'Add Random Product', add_random_product_path(:vendor_id => @vendor.id), class: 'btn btn-large btn-default'%>
+  </div>
+</div>
+<br>

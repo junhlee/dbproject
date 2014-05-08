@@ -1,6 +1,26 @@
 class WishlistsController < ApplicationController
   before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
 
+  def add_to_wishlist
+    @wishlist = Wishlist.find_by(id:params[:wishlist_id])
+    if params[:product_id]
+      @product = Product.find_by(id:params[:product_id])
+      @wishlist.products << @product
+    end
+    @wishlist.update_wishlist
+    render 'show', :wishlist_id => @wishlist.id
+  end
+
+  def remove_from_wishlist
+    @wishlist = Wishlist.find_by(id:params[:wishlist_id])
+    if params[:product_id]
+      @product = Product.find_by(id:params[:product_id])
+      @wishlist.products.delete(@product)
+    end
+    @wishlist.update_cart
+    render 'show', :wishlist_id => @wishlist.id
+  end
+
   # GET /wishlists
   # GET /wishlists.json
   def index

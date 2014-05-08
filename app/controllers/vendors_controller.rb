@@ -6,12 +6,12 @@ class VendorsController < ApplicationController
   end
 
   def product_listing
-    @vendor = Vendor.find_by(params[:vendor_id])
+    @vendor = Vendor.find_by(:id => params[:vendor_id])
     @products = @vendor.products
   end
 
   def add_random_product
-    @vendor = Vendor.find_by(params[:vendor_id])
+    @vendor = Vendor.find_by(:id => params[:vendor_id])
     @vendor.add_random_product
     redirect_to :back
   end

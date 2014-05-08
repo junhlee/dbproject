@@ -1,9 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  def new_vendor_product
-  end
-
   # GET /products
   # GET /products.json
   def index
@@ -20,6 +17,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @vendor = Vendor.find_by(:id => params[:vendor_id])
   end
 
   # GET /products/1/edit
@@ -30,7 +28,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @vendor = Vendor.find_by(params[:vendor_id])
+    @vendor = Vendor.find_by(params[:product][:vendor_id])
     @vendor.products << @product
     respond_to do |format|
       if @product.save

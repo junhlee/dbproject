@@ -23,7 +23,9 @@ class Vendor < ActiveRecord::Base
              'Ouija Board',
              'Satanic Mask',
              'Used Coffin',
-             'Can of Pepper Spray']
+             'Can of Pepper Spray',
+             'Used Socks',
+             'Adult Diapers']
 
     adjectives.shuffle!
     nouns.shuffle!

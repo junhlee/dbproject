@@ -12,8 +12,6 @@ Dbproject::Application.routes.draw do
 
   resources :wishlists
 
-  resources :sales
-
   resources :customers
 
   # The priority is based upon order of creation: first created -> highest priority.

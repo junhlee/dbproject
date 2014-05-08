@@ -24,6 +24,10 @@
         <%= f.label :stock %>
         <%= f.text_field :stock, class:'form-control', placeholder:'Enter quantity you want to sell' %>
       </div>
+      <div class="form-group" hidden="YES">
+        <%= f.label :vendor_id %>
+        <%= f.number_field :vendor_id, class:'form-control', placeholder:'bleh', :value => @vendor.id %>
+      </div>
       <button type="submit" class="btn btn-default actions">Post Listing</button>
     </form>
 <% end %>
